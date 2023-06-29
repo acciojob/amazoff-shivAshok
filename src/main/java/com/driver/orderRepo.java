@@ -43,7 +43,10 @@ public class orderRepo {
     }
 
     public List<String> getOrders(String partnerId) {
-        return partnerorder.get(partnerId);
+        if(partnerorder.containsKey(partnerId)) {
+            return partnerorder.get(partnerId);
+        }
+        return new ArrayList<>();
     }
 
     public List<String> getAllOrd() {

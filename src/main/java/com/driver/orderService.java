@@ -49,14 +49,10 @@ public class orderService {
         return optional;
     }
 
-    public Optional<DeliveryPartner> getPartnerbyid(String partnerId) {
-        Optional<DeliveryPartner> deliveryPartner=repo.getpartnerByid(partnerId);
-        if(deliveryPartner.isEmpty()){
-            throw new RuntimeException("partner id not present");
-        }
-        return  deliveryPartner;
+    public int getCountPartnerbyid(String partnerId) {
+        List<String> orders = repo.getOrders(partnerId);
+        return orders.size();
     }
-
     public List<String> getOrdersbyParter(String partnerId) {
         Optional<DeliveryPartner> tt=repo.getpartnerByid(partnerId);
         if(tt.isPresent()){
@@ -111,5 +107,13 @@ public class orderService {
         repo.deleteOrder(orderId);
         String partnerId=repo.getPartnerForOrderId(orderId);
         repo.unassignPartner(partnerId,orderId);
+    }
+
+    public Optional<DeliveryPartner> getPartnerbyid(String partnerId) {
+        Optional<DeliveryPartner> deliveryPartner=repo.getpartnerByid(partnerId);
+        if(deliveryPartner.isEmpty()){
+            throw new RuntimeException("invalid id");
+        }
+        return deliveryPartner;
     }
 }
