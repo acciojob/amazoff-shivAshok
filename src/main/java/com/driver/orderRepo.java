@@ -1,5 +1,7 @@
 package com.driver;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,6 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@NoArgsConstructor
+@AllArgsConstructor
 public class orderRepo {
    private HashMap<String,Order> ordermap=new HashMap<>();
   private  HashMap<String,DeliveryPartner> partnermap=new HashMap<>();
