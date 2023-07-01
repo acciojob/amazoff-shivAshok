@@ -16,7 +16,7 @@ import java.util.Optional;
 @AllArgsConstructor
 public class orderService {
     @Autowired
-    private orderRepo repo;
+    private orderRepo repo=new orderRepo();
     public void addOrDer(Order order) {
        repo.addMyorder(order);
     }
