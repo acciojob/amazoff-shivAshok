@@ -94,18 +94,19 @@ public class orderService {
     }
 
     public void deleteThisPartner(String partnerId) {
-        repo.deletePartner(partnerId);
+
         if(Objects.nonNull(partnerId)) {
             List<String> orderIds = repo.getOrders(partnerId);
             for (String id : orderIds) {
                 repo.unassignOrder(id);
             }
         }
+        repo.deletePartner(partnerId);
     }
 
     public void deleteOrderId(String orderId) {
-        repo.deleteOrder(orderId);
         String partnerId=repo.getPartnerForOrderId(orderId);
+        repo.deleteOrder(orderId);
         repo.unassignPartner(partnerId,orderId);
     }
 

@@ -11,6 +11,14 @@ public class Timeutils {
     public static String getDeliveryTimeAsString(int deliveryTime){
         int hours=deliveryTime/60;
         int min=deliveryTime%60;
-        return String.format("%s:%s",String.valueOf(hours),String.valueOf(min));
+        String hh=String.valueOf(hours);
+        String mm=String.valueOf(min);
+        if(hh.length()==1){
+            hh='0'+hh;
+        }
+        if(mm.length()==1){
+            mm='0'+mm;
+        }
+        return hh+":"+mm;
     }
 }

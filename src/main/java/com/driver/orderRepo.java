@@ -86,7 +86,7 @@ public class orderRepo {
     }
 
     public String getPartnerForOrderId(String orderId) {
-        return orderpartner.get(orderId);
+        return orderpartner.getOrDefault(orderId,null);
     }
 
     public void unassignPartner(String partnerId,String orderId) {
